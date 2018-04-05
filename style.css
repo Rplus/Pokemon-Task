@@ -65,7 +65,9 @@
     display: block; }
 
 .main {
-  padding-top: 3rem; }
+  padding-top: 3rem;
+  max-width: 30em;
+  margin: 0 auto; }
 
 .item {
   position: relative;

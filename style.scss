@@ -82,6 +82,8 @@ $c5: mix(#ccc, #fff, 10%);
 
 .main {
   padding-top: $nav-h;
+  max-width: 30em;
+  margin: 0 auto;
 }
 
 .item {
