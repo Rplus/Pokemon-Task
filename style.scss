@@ -1,0 +1,170 @@
+$nav-h: 3rem;
+$c1: mix(#c00, #fff, 15%);
+$c2: mix(#0c0, #fff, 30%);
+$c3: mix(#00c, #fff, 15%);
+$c4: mix(#cc0, #fff, 30%);
+$c5: mix(#ccc, #fff, 10%);
+
+.pms {
+  br {
+    display: none;
+    .item:target & {
+      display: block;
+    }
+  }
+}
+
+.pm {
+  position: relative;
+  display: inline-flex;
+  margin-right: .75em;
+  min-width: 6em;
+
+  .item:target & {
+    // line-height: 2;
+    // padding-left: .5em;
+    // border-left: .25em solid lighten(#000, 90);
+  }
+}
+
+.cp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+  text-align: right;
+  margin-left: .15em;
+
+  &::before {
+    content: attr(data-cp-max);
+    font-size: .75em;
+    font-weight: 900;
+    line-height: 1;
+    color: #22c;
+  }
+
+  &::after {
+    content: attr(data-cp-min);
+    font-size: .6em;
+    line-height: 1;
+    color: #999;
+  }
+}
+
+.task {
+  font-weight: bolder;
+  padding-left: 1em;
+
+  .item:target & {
+    background-image: linear-gradient(to left, #ffc 60%, transparent 90%);
+  }
+}
+
+.rewords {
+  position: relative;
+  margin-top: .5em;
+  margin-left: 1.5em;
+  padding-left: .5em;
+  border-left: .5em solid lighten(#000, 80);
+}
+
+.reword {
+  display: inline-block;
+  margin-right: 1em;
+  line-height: 1.75;
+  min-width: 6em;
+
+  &[data-pms="1"] {
+    display: block;
+  }
+
+  .item:target & {
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+}
+
+.main {
+  padding-top: 2em;
+}
+
+.item {
+  position: relative;
+  padding-bottom: 1em;
+  padding-left: calc(5vw + 1em);
+  background-image: linear-gradient(90deg, var(--bgi, $c5), transparent calc(5vw + 5em));
+
+  &[id^="對戰"] { --bgi: $c1; }
+  &[id^="捕捉"] { --bgi: $c2; }
+  &[id^="養成"] { --bgi: $c3; }
+  &[id^="擲球"] { --bgi: $c4; }
+
+  &:target {
+    &::before {
+      content: '';
+      display: block;
+      padding-top: $nav-h;
+      margin-top: -$nav-h;
+      visibility: hidden;
+    }
+
+    .anchor {
+      margin-top: $nav-h;
+    }
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: $nav-h - 1rem;
+  line-height: $nav-h - 1rem;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(#000, .2);
+
+  a {
+    padding: .4em .5em;
+    text-decoration: none;
+
+    &:nth-of-type(1) { background-color: $c1; }
+    &:nth-of-type(2) { background-color: $c2; }
+    &:nth-of-type(3) { background-color: $c3; }
+    &:nth-of-type(4) { background-color: $c4; }
+    &:nth-of-type(5) { background-color: $c5; }
+  }
+}
+
+.anchor {
+  position: absolute;
+  top: 0;
+  left: .5em;
+  color: lighten(#000, 70);
+  text-decoration: none;
+  width: 2em;
+  text-align: right;
+  font-size: smaller;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+footer {
+  padding: 1em;
+  text-align: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

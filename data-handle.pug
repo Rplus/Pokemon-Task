@@ -1,0 +1,47 @@
+-
+  var insertCP = (pm) => {
+    if (!pms[pm]) {
+      return `!!!${pm}!!!`;
+    }
+    return `<span class="pm">${pm}<span class="cp" data-cp-max="${pms[pm][0]}" data-cp-min="${pms[pm][1]}"></span></span>`;
+  };
+  var rewordsPMs = (match, p1, offset, string) => {
+    return `<span class="pms">${p1.split('|').map(insertCP).join('<br />')}</span>`;
+  };
+  var splitPM = (match, p1) => {
+    return match.replace(/\//g, '|');
+  };
+  var sortRewords = (a, b) => {
+    return a[a.length - 1] > b[b.length - 1];
+  };
+  var addSpace = () => {
+  };
+  var pmPattern = /指定PM遭遇\(([^)]+?)\)/g;
+  var typeCounter = {};
+  var _data = data
+    .split('xxx')
+    .filter(Boolean)
+    .map(row => {
+      row = row.split('|');
+      if (typeCounter[row[0]]) {
+        typeCounter[row[0]] += 1;
+      } else {
+        typeCounter[row[0]] = 1;
+      }
+      row.counter = typeCounter[row[0]];
+
+      row[1] = row[1].replace(/([^ ])(\d+)([^ ])/g, '$1 $2 $3');
+
+      row[2] = row[2]
+        .replace(pmPattern, splitPM)
+        .replace(/(\d+)([^ ])/g, '$1 $2')
+        .split('/')
+        .sort(sortRewords)
+
+      if (row[2][0].startsWith('指定')) {
+        row[2][0] = row[2][0].replace(pmPattern, rewordsPMs);
+      }
+      row[2] = row[2].reverse();
+      return row;
+    })
+

@@ -1,0 +1,134 @@
+@charset "UTF-8";
+.pms br {
+  display: none; }
+  .item:target .pms br {
+    display: block; }
+
+.pm {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: .75em;
+  min-width: 6em; }
+
+.cp {
+  position: relative;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: right;
+  margin-left: .15em; }
+  .cp::before {
+    content: attr(data-cp-max);
+    font-size: .75em;
+    font-weight: 900;
+    line-height: 1;
+    color: #22c; }
+  .cp::after {
+    content: attr(data-cp-min);
+    font-size: .6em;
+    line-height: 1;
+    color: #999; }
+
+.task {
+  font-weight: bolder;
+  padding-left: 1em; }
+  .item:target .task {
+    background-image: linear-gradient(to left, #ffc 60%, transparent 90%); }
+
+.rewords {
+  position: relative;
+  margin-top: .5em;
+  margin-left: 1.5em;
+  padding-left: .5em;
+  border-left: 0.5em solid #cccccc; }
+
+.reword {
+  display: inline-block;
+  margin-right: 1em;
+  line-height: 1.75;
+  min-width: 6em; }
+  .reword[data-pms="1"] {
+    display: block; }
+  .item:target .reword {
+    display: block; }
+  @media (max-width: 600px) {
+    .reword {
+      display: block; } }
+
+.main {
+  padding-top: 2em; }
+
+.item {
+  position: relative;
+  padding-bottom: 1em;
+  padding-left: calc(5vw + 1em);
+  background-image: linear-gradient(90deg, var(--bgi, #fafafa), transparent calc(5vw + 5em)); }
+  .item[id^="對戰"] {
+    --bgi: #f7d9d9; }
+  .item[id^="捕捉"] {
+    --bgi: #b3f0b3; }
+  .item[id^="養成"] {
+    --bgi: #d9d9f7; }
+  .item[id^="擲球"] {
+    --bgi: #f0f0b3; }
+  .item:target::before {
+    content: '';
+    display: block;
+    padding-top: 3rem;
+    margin-top: -3rem;
+    visibility: hidden; }
+  .item:target .anchor {
+    margin-top: 3rem; }
+
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); }
+  .nav a {
+    padding: .4em .5em;
+    text-decoration: none; }
+    .nav a:nth-of-type(1) {
+      background-color: #f7d9d9; }
+    .nav a:nth-of-type(2) {
+      background-color: #b3f0b3; }
+    .nav a:nth-of-type(3) {
+      background-color: #d9d9f7; }
+    .nav a:nth-of-type(4) {
+      background-color: #f0f0b3; }
+    .nav a:nth-of-type(5) {
+      background-color: #fafafa; }
+
+.anchor {
+  position: absolute;
+  top: 0;
+  left: .5em;
+  color: #b3b3b3;
+  text-decoration: none;
+  width: 2em;
+  text-align: right;
+  font-size: smaller; }
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 24px; }
+
+footer {
+  padding: 1em;
+  text-align: center; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }

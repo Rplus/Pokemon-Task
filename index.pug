@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Document
+    //- script(src="js.js")
+    link(rel="stylesheet", href="style.css")
+  body
+    include pm-cp-info.pug
+    include data.pug
+    include data-handle.pug
+
+    nav.nav
+      each i in ['對戰', '捕捉', '養成', '擲球', '其他']
+        a(href=`#${i}-1`)= i
+
+    main.main
+      each row in _data
+        - var id = `${row[0]}-${row.counter}`;
+        .item(id=id)
+          a.anchor(href=`#${id}`)= `${row[0]} ${row.counter}`
+          .task= row[1]
+          .rewords
+            each reword in row[2]
+              span.reword(data-pms=(reword.startsWith('<') ? '1': '')) !{reword}
+
+    footer
+      | 更新資料請至 #[a(href="https://docs.google.com/forms/d/e/1FAIpQLScOQiVA-Lj9EYZpjMYqXahiW6-szjaY33x7Mp0NxG8-XQrVpQ/viewform") Google 表單： Pokemon 田野調查任務獎勵]
