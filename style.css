@@ -129,13 +129,38 @@
   text-align: right;
   font-size: smaller; }
 
+.workspace {
+  background-color: #fff; }
+  #invert:checked + .workspace {
+    filter: invert(1); }
+
+.toggle-invert {
+  margin-right: 1em; }
+  .toggle-invert::before {
+    content: '☐'; }
+    #invert:checked + .workspace .toggle-invert::before {
+      content: '☑'; }
+
 body {
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: #222; }
 
 footer {
   padding: 1em;
   margin-left: 3vw; }
+
+.sr-only {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
 
 *,
 *::before,
