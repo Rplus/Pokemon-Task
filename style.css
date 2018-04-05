@@ -105,7 +105,7 @@
   background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); }
   .nav a {
-    padding: 0 .75em;
+    padding: 0 .5em;
     text-decoration: none;
     background-color: var(--nav-color); }
     .nav a:nth-of-type(1) {
@@ -135,9 +135,11 @@
     filter: invert(1); }
 
 .toggle-invert {
+  font-size: small;
   margin-right: 1em; }
   .toggle-invert::before {
-    content: '☐'; }
+    content: '☐';
+    margin-right: .2em; }
     #invert:checked + .workspace .toggle-invert::before {
       content: '☑'; }
 

@@ -125,7 +125,7 @@ $c5: mix(#ccc, #fff, 10%);
   box-shadow: 0 1px 5px rgba(#000, .2);
 
   a {
-    padding: 0 .75em;
+    padding: 0 .5em;
     text-decoration: none;
     background-color: var(--nav-color);
 
@@ -157,10 +157,12 @@ $c5: mix(#ccc, #fff, 10%);
 }
 
 .toggle-invert {
+  font-size: small;
   margin-right: 1em;
 
   &::before {
     content: '☐';
+    margin-right: .2em;
 
     #invert:checked + .workspace & {
       content: '☑';
